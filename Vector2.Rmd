@@ -1,0 +1,94 @@
+---
+title: "Vector2"
+output: html_document
+---
+
+## vector 
+
+1. 내장된 상수 벡터 : LETTERS(), letters(), month.name(), month.abb(), pi
+```{r}
+LETTERS[1:5]
+letters[1:5]
+```
+```{r}
+month.name[1:5]
+month.abb[1:5]
+pi
+```
+
+3. print(), class(), rev(), range()
+```{r}
+x <- c(27, 5, 10, 30, 15, 37)
+print(x)
+class(x) 
+rev(x) # 거꾸로 출력
+range(x) # 최솟값과 최댓값 출력
+```
+
+4. sort(), order()
+```{r}
+y <- c(2,6,3,8,9,4,7,1)
+sort(y) # 정렬 (오름차순 기본값)
+sort(y, decreasing = TRUE) #내림차순으로
+order(y) # 정렬 색인 값 출력 / y에서 가장 작은 값(1)이 8번째에 있다.
+y[order(y)] # == sort(y)
+```
+
+5. max(), min(), mean(), sum(), summary()
+```{r}
+a <- c(2,4,6,8)
+max(a) # 최댓값
+min(a) # 최솟값
+mean(a) # 평균
+sum(a) # 총합
+summary(a) 
+```
+*summary() 함수를 통해서는 아래의 지표들을 구할 수 있다.   
+- minimum
+- maximum
+- quartiles
+- the mean for numerical variables
+- frequencies
+
+6. str()
+```{r}
+num <- c(1,2,3)
+cha <- c("A","B","C","D")
+str(num) #문자 데이터 유형, 벡터의 차원, 인덱스 출력
+str(cha) #문자 데이터 유형, 벡터의 차원, 인덱스 출력
+```
+
+7. length()
+```{r}
+length(num) # 벡터의 길이 출력
+length(cha) # 벡터의 길이 출력
+```
+
+8. sample()
+```{r}
+sample(1:45, 6) #1~45 사이 6개 랜덤한 숫자 출력
+sample(1:10, 7, replace=T) # 1~10 사이 7개 랜덤한 숫자 출력 (중복 허용)
+```
+
+9. paste()
+```{r}
+paste("I'm","SHIN","!!")
+paste("I'm","SHIN","!!", sep="")
+fruit <- c("Apple", "Banana", "Strawberry")
+food <- c("Pie","Juice", "Cake")
+paste(fruit, food) # fruit와 food 사이 일치하는 인덱스 결합
+paste(fruit, food, sep="")
+paste(fruit, food, sep=":::") # sep = 원소 사이에 옵션 적용
+paste(fruit, food, sep="", collapse="-") # collapser = 각 결과값에 옵션 적용
+paste(fruit, food, sep="", collapse="")
+paste(fruit, food, collapse=",")
+```
+
+
+. ls(), rm()
+```{r}
+ls() # 패키지에 포함된 모든 객체(데이터셋, 함수)를 출력
+rm(num) # 객체를 작업공간에서 영원히 제거
+ls()
+```
+
