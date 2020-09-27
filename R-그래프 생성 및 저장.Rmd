@@ -1,0 +1,60 @@
+---
+title: "R-기초와 활용"
+subtitle : "10.2 그래프 생성 및 저장"
+output: html_document
+---
+
+## 데이터가 두개의 열로 구성된 데이터프레임 형식
+```{r}
+str(cars)
+plot(cars$speed, cars$dist)
+```
+
+## 인수로 주어지는 두 벡터 중 첫 번째 벡터(x 벡터)가 집단을 나타내는 펙터 형식 -> boxplot 생성
+```{r}
+str(ToothGrowth)
+plot(ToothGrowth$supp, ToothGrowth$len)
+```
+
+## 변수가 두 개를 초과하는 경우 산점도 행렬 생성
+```{r}
+str(iris)
+plot(iris[,1:4])
+```
+
+## 시계열 데이터가 인수로 주어지면 시계열도표 생성
+```{r}
+str(nhtemp)
+plot(nhtemp)
+```
+
+## 테이블 형식의 데이터가 주어지면 모자이크도표 생성
+```{r}
+str(UCBAdmissions)
+plot(UCBAdmissions)
+```
+
+## 모델 객체 데이터가 주어지면 진단도표 생성
+```{r}
+str(faithful)
+faithful.lm <- lm(waiting ~ eruptions, data=faithful)
+class(faithful.lm)
+plot(faithful.lm)
+```
+
+## **그래프 저장**
+```{r}
+#plot(faithful)
+#savePlot(filename="myplot.pdf",type="pdf")
+```
+
+```{r}
+#png("myplot.png", width=648, height=432)
+#plot(faithful)
+#dev.off()
+```
+
+
+
+
+

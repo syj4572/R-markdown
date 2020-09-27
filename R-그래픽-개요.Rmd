@@ -1,0 +1,75 @@
+---
+title: "R-기초와 활용"
+subtitle : "10.1 그래픽 개요"
+output: html_document
+---
+
+## 고수준 그래픽 함수
+- 완전한 하나의 그래프 생성
+
+1. plot() : 제네릭 그래프(generic plotting) 생성 
+2. boxplot() : 상자도표(box plot) 생성
+3. hist() : 히스토그램(histogram) 생성
+4. qqnorm() : Q-Q 도표(quantile-quantile plot) 생성
+5. curve() : 사용자 지정 함수로부터 그래프 생성
+
+## 저수준 그래픽 함수
+- 기존의 완성된 그래프에 부가적인 요소를 추가하는 역할
+
+- 고수준 그래픽 함수를 먼저 호출해야 함
+
+1. points() : 점 추가
+2. lines() : 선 추가
+3. abline() : 직선 추가
+4. segments() : 꺾은선 추가
+5. polygon() : 다각형 추가
+6. text() : 텍스트 추가
+
+```{r}
+str(faithful)
+```
+
+```{r}
+plot(faithful)
+```
+
+### 그래프상에서 점의 색상이나 모양 지정
+```{r}
+eruptions.long <- with(faithful, faithful[eruptions > 3,])
+```
+
+```{r}
+plot(faithful)
+points(eruptions.long, col="red", pch=19)
+```
+
+### lines() 함수를 이용하여 그래프상에 선 나타내기
+```{r}
+faithful.lm <- lm(waiting ~ eruptions, data=faithful)
+```
+- lm() 함수를 통하여 선형회귀모델 추정
+- waiting은 종속변수, eruptions는 독립변수
+
+```{r}
+plot(faithful)
+points(eruptions.long, col="red", pch=19)
+lines(x = faithful$eruptions, y = fitted(faithful.lm),col="blue")
+```
+- 회귀모델 추정 후 fitted()함수를 이용하여 회귀모델로부터 예측값 추출
+
+```{r}
+plot(faithful)
+points(eruptions.long, col="red", pch=19)
+lines(x = faithful$eruptions, y = fitted(faithful.lm),col="blue")
+abline(v=3, col="purple")
+abline(h=mean(faithful$waiting), col="green")
+```
+
+
+
+
+
+
+
+
+
